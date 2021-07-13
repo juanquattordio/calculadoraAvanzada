@@ -3,6 +3,7 @@ import './App.css';
 import ClearButton from './ClearButton';
 import Input from './Input';
 import Resultado from './Resultado';
+import Result from './Result';
 
 class CalcAvanzada extends Component {
     state = {
@@ -33,6 +34,8 @@ class CalcAvanzada extends Component {
 
                 <ClearButton name="input2" onClick={this.clear}></ClearButton>
                 <Input name="input2" onChange={this.changeValue}></Input>
+
+                <Result value={this.state.input1} value2={this.state.input2}></Result>
 
                 <Resultado label="suma" value={this.state.suma}></Resultado>
                 <Resultado label="resta" value={this.state.resta}></Resultado>
