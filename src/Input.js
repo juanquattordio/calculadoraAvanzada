@@ -10,7 +10,7 @@ class Input extends Component {
     render() {
         return (
             <div>
-                <input type="text" name={this.props.name} onChange={this.changeValue}>
+                <input type="text" name={this.props.name} onChange={this.changeValue} value={this.props.valor}>
                 </input>
 
             </div>

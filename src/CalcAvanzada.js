@@ -2,17 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import ClearButton from './ClearButton';
 import Input from './Input';
-import Resultado from './Resultado';
 import Result from './Result';
 
 class CalcAvanzada extends Component {
     state = {
         input1: 0,
         input2: 0,
-        suma: 0,
-        resta: 0,
-        multiplicacion: 0,
-        division: 0,
     }
     clear = (name) => {
         this.setState({
@@ -30,17 +25,12 @@ class CalcAvanzada extends Component {
         return (
             <div>
                 <ClearButton name="input1" onClick={this.clear}></ClearButton>
-                <Input name="input1" onChange={this.changeValue}></Input>
+                <Input name="input1" onChange={this.changeValue} valor={this.state.input1}></Input>
 
                 <ClearButton name="input2" onClick={this.clear}></ClearButton>
-                <Input name="input2" onChange={this.changeValue}></Input>
+                <Input name="input2" onChange={this.changeValue} valor={this.state.input2}></Input>
 
                 <Result value={this.state.input1} value2={this.state.input2}></Result>
-
-                <Resultado label="suma" value={this.state.suma}></Resultado>
-                <Resultado label="resta" value={this.state.resta}></Resultado>
-                <Resultado label="multiplicación" value={this.state.multiplicacion}></Resultado>
-                <Resultado label="división" value={this.state.division}></Resultado>
             </div>
         )
 
