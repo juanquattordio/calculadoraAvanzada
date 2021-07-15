@@ -18,9 +18,9 @@ function Result(props) {
         setResultadoMult(a * b);
         setResultadoDiv(a / b);
         setResultadoPow(Math.pow(a, b));
-        setResultadoSqrtA(Math.sqrt(a));
-        setResultadoSqrtB(Math.sqrt(b));
-        setResultadoHyp(Math.hypot(a, b));
+        setResultadoSqrtA((Math.sqrt(a)).toFixed(3));
+        setResultadoSqrtB((Math.sqrt(b)).toFixed(3));
+        setResultadoHyp((Math.hypot(a, b)).toFixed(3));
     }, [props])
 
     let a = parseFloat(props.value);
