@@ -16,7 +16,7 @@ function Result(props) {
         setResultadoSuma(a + b);
         setResultadoResta(a - b);
         setResultadoMult(a * b);
-        setResultadoDiv(a / b);
+        if (b != 0) { setResultadoDiv(a / b) } else { setResultadoDiv("Error") }
         setResultadoPow(Math.pow(a, b));
         setResultadoSqrtA((Math.sqrt(a)).toFixed(3));
         setResultadoSqrtB((Math.sqrt(b)).toFixed(3));
