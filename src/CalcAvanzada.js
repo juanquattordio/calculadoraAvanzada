@@ -32,17 +32,23 @@ class CalcAvanzada extends Component {
             [name]: value,
         })
     }
+    onFocus = (name) => {
+        if (this.state.input1 === 0) {
+            this.setState({
+                [name]: "",
+            })
+        }
+    }
 
     render() {
         return (
             <div>
                 <ClearButton name="input1" onClick={this.clear}></ClearButton>
-                <input ></input>
-                <Input name="input1" onChange={this.changeValue} onKeyDown={this.changeValue2}
+                <Input name="input1" onChange={this.changeValue} onKeyDown={this.changeValue2} onFocus={this.onFocus}
                     valor={this.state.input1}></Input>
 
                 <ClearButton name="input2" onClick={this.clear}></ClearButton>
-                <Input name="input2" onChange={this.changeValue} onKeyDown={this.changeValue2}
+                <Input name="input2" onChange={this.changeValue} onKeyDown={this.changeValue2} onFocus={this.onFocus}
                     valor={this.state.input2}></Input>
 
                 <Result value={this.state.input1} value2={this.state.input2}></Result>
