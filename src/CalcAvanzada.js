@@ -3,6 +3,8 @@ import './App.css';
 import ClearButton from './ClearButton';
 import Input from './Input';
 import Result from './Result';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 class CalcAvanzada extends Component {
     state = {
@@ -35,17 +37,19 @@ class CalcAvanzada extends Component {
 
     render() {
         return (
-            <div>
-                <ClearButton name="input1" onClick={this.clear}></ClearButton>
-                <Input name="input1" onChange={this.changeValue} onKeyDown={this.changeValue2}
-                    valor={this.state.input1}></Input>
+            <DndProvider backend={HTML5Backend}>
+                <div>
+                    <ClearButton name="input1" onClick={this.clear}></ClearButton>
+                    <Input name="input1" onChange={this.changeValue} onKeyDown={this.changeValue2}
+                        valor={this.state.input1}></Input>
 
-                <ClearButton name="input2" onClick={this.clear}></ClearButton>
-                <Input name="input2" onChange={this.changeValue} onKeyDown={this.changeValue2}
-                    valor={this.state.input2}></Input>
+                    <ClearButton name="input2" onClick={this.clear}></ClearButton>
+                    <Input name="input2" onChange={this.changeValue} onKeyDown={this.changeValue2}
+                        valor={this.state.input2}></Input>
 
-                <Result value={this.state.input1} value2={this.state.input2}></Result>
-            </div>
+                    <Result value={this.state.input1} value2={this.state.input2}></Result>
+                </div>
+            </DndProvider>
         )
 
     }

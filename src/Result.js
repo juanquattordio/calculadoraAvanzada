@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useDrag } from 'react-dnd'
 
 function Result(props) {
     let [resultadoSuma, setResultadoSuma] = useState(0);
@@ -25,10 +26,16 @@ function Result(props) {
 
     let a = parseFloat(props.value);
     let b = parseFloat(props.value2);
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: "image",
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging(),
+        })
+    }));
     return (
         <div>
-            <p>El resultado de la suma de {a} y {b} es: {resultadoSuma} </p>
-            <p>El resultado de la resta de {a} y {b} es: {resultadoResta} </p>
+            <p id="Rsuma" ref={drag} style={{ border: isDragging ? "5px solid red" : "0px" }}>El resultado de la suma de {a} y {b} es: {resultadoSuma} </p>
+            <p ref={drag} style={{ border: isDragging ? "5px solid red" : "0px" }}>El resultado de la resta de {a} y {b} es: {resultadoResta} </p>
             <p>El resultado de la multiplicación de {a} y {b} es: {resultadoMult} </p>
             <p>El resultado de la división de {a} y {b} es: {resultadoDiv} </p>
             <p>El resultado de la potencia de {a} elevado a {b} es: {resultadoPow} </p>
