@@ -16,9 +16,9 @@ function Result(props) {
         setResultadoSuma(a + b);
         setResultadoResta(a - b);
         setResultadoMult(a * b);
-        if (b != 0) { setResultadoDiv(a / b) } else { setResultadoDiv("Error") }
+        if (b !== 0) { setResultadoDiv((a / b).toFixed(3)) } else { setResultadoDiv("Error") };
         setResultadoPow(Math.pow(a, b));
-        setResultadoSqrtA((Math.sqrt(a)).toFixed(3));
+        if (a < 0) { setResultadoSqrtA((Math.sqrt(a)).toFixed(3)) } else { setResultadoDiv("Error") };
         setResultadoSqrtB((Math.sqrt(b)).toFixed(3));
         setResultadoHyp((Math.hypot(a, b)).toFixed(3));
     }, [props])

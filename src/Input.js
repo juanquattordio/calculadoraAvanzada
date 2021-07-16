@@ -4,7 +4,7 @@ import './App.css';
 class Input extends Component {
 
     changeValue = (e) => {
-        if (!isNaN(e.target.value) || e.target.value == '.' || e.target.value == '-') {
+        if (!isNaN(e.target.value) || e.target.value === '.' || e.target.value === '-') {
             this.props.onChange(e.target.value, [e.target.name])
         }
     }
@@ -16,13 +16,20 @@ class Input extends Component {
         }
     }
     onFocus = (e) => {
-        this.props.onFocus([e.target.name]);
+        if (e.target.value === '0') {
+            this.props.onChange("", [e.target.name])
+        }
+    }
+    onBlur = (e) => {
+        if (e.target.value === '') {
+            this.props.onChange(0, [e.target.name])
+        }
     }
     render() {
         return (
             <div>
                 <input type="text" name={this.props.name} onChange={this.changeValue} onFocus={this.onFocus}
-                    value={this.props.valor}>
+                    onBlur={this.onBlur} value={this.props.valor}>
                 </input>
 
             </div>
