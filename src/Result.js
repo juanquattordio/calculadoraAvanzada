@@ -18,8 +18,8 @@ function Result(props) {
         setResultadoMult(a * b);
         if (b !== 0) { setResultadoDiv((a / b).toFixed(3)) } else { setResultadoDiv("Error") };
         setResultadoPow(Math.pow(a, b));
-        if (a < 0) { setResultadoSqrtA((Math.sqrt(a)).toFixed(3)) } else { setResultadoSqrtA("Error") };
-        if (b < 0) { setResultadoSqrtB((Math.sqrt(b)).toFixed(3)) } else { setResultadoSqrtB("Error") };;
+        if (a > 0) { setResultadoSqrtA((Math.sqrt(a)).toFixed(3)) } else { setResultadoSqrtA("Error") };
+        if (b > 0) { setResultadoSqrtB((Math.sqrt(b)).toFixed(3)) } else { setResultadoSqrtB("Error") };
         setResultadoHyp((Math.hypot(a, b)).toFixed(3));
     }, [props])
 
