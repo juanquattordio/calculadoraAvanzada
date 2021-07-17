@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { useDrag } from 'react-dnd'
 
 function Result(props) {
     let [resultadoSuma, setResultadoSuma] = useState(0);
@@ -19,23 +18,18 @@ function Result(props) {
         setResultadoMult(a * b);
         if (b !== 0) { setResultadoDiv((a / b).toFixed(3)) } else { setResultadoDiv("Error") };
         setResultadoPow(Math.pow(a, b));
-        if (a < 0) { setResultadoSqrtA((Math.sqrt(a)).toFixed(3)) } else { setResultadoDiv("Error") };
-        setResultadoSqrtB((Math.sqrt(b)).toFixed(3));
+        if (a < 0) { setResultadoSqrtA((Math.sqrt(a)).toFixed(3)) } else { setResultadoSqrtA("Error") };
+        if (b < 0) { setResultadoSqrtB((Math.sqrt(b)).toFixed(3)) } else { setResultadoSqrtB("Error") };;
         setResultadoHyp((Math.hypot(a, b)).toFixed(3));
     }, [props])
 
     let a = parseFloat(props.value);
     let b = parseFloat(props.value2);
-    const [{ isDragging }, drag] = useDrag(() => ({
-        type: "image",
-        collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
-        })
-    }));
+
     return (
-        <div>
-            <p id="Rsuma" ref={drag} style={{ border: isDragging ? "5px solid red" : "0px" }}>El resultado de la suma de {a} y {b} es: {resultadoSuma} </p>
-            <p ref={drag} style={{ border: isDragging ? "5px solid red" : "0px" }}>El resultado de la resta de {a} y {b} es: {resultadoResta} </p>
+        <div className="border">
+            <p>El resultado de la suma de {a} y {b} es: {resultadoSuma} </p>
+            <p>El resultado de la resta de {a} y {b} es: {resultadoResta} </p>
             <p>El resultado de la multiplicación de {a} y {b} es: {resultadoMult} </p>
             <p>El resultado de la división de {a} y {b} es: {resultadoDiv} </p>
             <p>El resultado de la potencia de {a} elevado a {b} es: {resultadoPow} </p>
