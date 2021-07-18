@@ -4,17 +4,16 @@ import ClearButton from './ClearButton';
 import Input from './Input';
 import Result from './Result';
 import ResultDND from './ResultDND';
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 let OperacionesList = [
-    { key: 1, simbol: "+", operation: "suma" },
-    { key: 2, simbol: "-", operation: "resta" },
-    { key: 3, simbol: "*", operation: "multiplicación" },
-    { key: 4, simbol: "/", operation: "división" },
-    { key: 5, simbol: "^", operation: "potencia" },
-    { key: 6, simbol: "^-2", operation: "raiz cuadrada" },
-    { key: 7, simbol: "hyp", operation: "hipotenusa" },
+    { key: "1", simbol: "+", operation: "suma" },
+    { key: "2", simbol: "-", operation: "resta" },
+    { key: "3", simbol: "*", operation: "multiplicación" },
+    { key: "4", simbol: "/", operation: "división" },
+    { key: "5", simbol: "^", operation: "potencia" },
+    { key: "6", simbol: "^-2", operation: "raiz cuadrada" },
+    { key: "7", simbol: "hyp", operation: "hipotenusa" },
 ]
 
 class CalcAvanzada extends Component {
@@ -46,9 +45,14 @@ class CalcAvanzada extends Component {
         })
     }
 
+
+    onDragEnd = result => {
+        // para reordenar la lista
+    };
+
     render() {
         return (
-            <DndProvider backend={HTML5Backend}>
+            <div>
                 <div>
                     <ClearButton name="input1" onClick={this.clear}></ClearButton>
                     <Input name="input1" onChange={this.changeValue} onKeyDown={this.changeValue2}
@@ -60,12 +64,18 @@ class CalcAvanzada extends Component {
                         valor={this.state.input2}></Input>
                 </div>
                 {/* <Result value={this.state.input1} value2={this.state.input2}></Result> */}
-
-                <div>
-                    {OperacionesList.map((op) => <ResultDND value={this.state.input1} value2={this.state.input2} operation={op} key={op.key} ></ResultDND>)}
-                </div>
-
-            </DndProvider >
+                <DragDropContext onDragEnd={this.onDragEnd}>
+                    <Droppable droppableId="resultadosDroppeable1">
+                        {provided => (
+                            <div ref={provided.innerRef}
+                                {...provided.droppableProps}>
+                                {OperacionesList.map((op, index) => <ResultDND value={this.state.input1} value2={this.state.input2} operation={op} key={op.key} index={index}></ResultDND>)}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
+            </div>
         )
 
     }

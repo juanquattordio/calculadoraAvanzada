@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useDrag } from 'react-dnd'
+import { Draggable } from "react-beautiful-dnd";
 
 function ResultDND(props) {
     let [resultado, setResultado] = useState(0);
@@ -38,17 +38,21 @@ function ResultDND(props) {
         setMessage(message);
     }
 
-    const [{ isDragging }, drag] = useDrag(() => ({
-        type: "div",
-        collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
-        })
-    }));
     return (
-        <div className="border">
-            <p id="Result" ref={drag} style={{ border: isDragging ? "5px solid red" : "0px" }}>
-                {message}{resultado} </p>
-        </div>
+        <Draggable draggableId={props.operation.key} index={props.index}>
+            {provided => (
+                <div className="border"
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef}
+                >
+                    <p>
+                        {message}{resultado}
+                    </p>
+                </div>
+            )}
+
+        </Draggable>
     )
 }
 export default ResultDND
