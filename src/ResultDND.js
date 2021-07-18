@@ -41,7 +41,7 @@ function ResultDND(props) {
     return (
         <Draggable draggableId={props.operation.key} index={props.index}>
             {provided => (
-                <div className="border"
+                <div className="border space result"
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}

@@ -1,10 +1,38 @@
 .App {
-  text-align: center;
+  font-size: 100%;
+  padding: 3rem 5rem;
+  background-color: #ffcdb2;
+}
+.space{
+  margin: 0.5em;
+  padding: 0.5em;
 }
 .border{
-  border: solid red 1px;
+  border: solid #6d6875 1px;
+  border-radius: 0.8em;
 }
-#Rresta{
-  color: blue;
-  border: solid blue 2px;
+.d-flex{
+  display: flex;
+  justify-content: space-around;
+}
+.clearButton{
+  margin-right: 1em;
+  width: 5rem;
+  background-color: #6d6875;
+  color: #fde2e4;
+  font-size: medium;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: bold;
+}
+.result{
+  background-color: #b5838d;
+  color: #fde2e4;
+  font-family: 'Noto Sans', sans-serif;
+  font-style: italic;
+}
+.input{
+  border: solid #6d6875 1px;
+  border-radius: 0.5em;
+  text-align: center;
+  font-size: medium;
 }

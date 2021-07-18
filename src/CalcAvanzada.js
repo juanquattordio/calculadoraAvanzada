@@ -70,23 +70,25 @@ class CalcAvanzada extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <ClearButton name="input1" onClick={this.clear}></ClearButton>
-                    <Input name="input1" onChange={this.changeValue} onKeyDown={this.changeValue2}
-                        valor={this.state.input1}></Input>
-                </div>
-                <div>
-                    <ClearButton name="input2" onClick={this.clear}></ClearButton>
-                    <Input name="input2" onChange={this.changeValue} onKeyDown={this.changeValue2}
-                        valor={this.state.input2}></Input>
+            <div className="App">
+                <div className="space d-flex">
+                    <div className="d-flex">
+                        <ClearButton name="input1" onClick={this.clear}></ClearButton>
+                        <Input name="input1" onChange={this.changeValue} onKeyDown={this.changeValue2}
+                            valor={this.state.input1}></Input>
+                    </div>
+                    <div className="d-flex">
+                        <ClearButton name="input2" onClick={this.clear}></ClearButton>
+                        <Input name="input2" onChange={this.changeValue} onKeyDown={this.changeValue2}
+                            valor={this.state.input2}></Input>
+                    </div>
                 </div>
                 {/* <Result value={this.state.input1} value2={this.state.input2}></Result> */}
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <Droppable droppableId="resultadosDroppeable1">
                         {provided => (
                             <div ref={provided.innerRef}
-                                {...provided.droppableProps}>
+                                {...provided.droppableProps} className="space">
                                 {OperacionesList.map((op, index) => <ResultDND value={this.state.input1} value2={this.state.input2} operation={op} key={op.key} index={index}></ResultDND>)}
                                 {provided.placeholder}
                             </div>

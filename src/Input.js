@@ -27,12 +27,12 @@ class Input extends Component {
     }
     render() {
         return (
-            <div>
-                <input type="text" name={this.props.name} onChange={this.changeValue} onFocus={this.onFocus}
-                    onBlur={this.onBlur} value={this.props.valor}>
-                </input>
+            <div >
+                < input className="space input" type="text" name={this.props.name} onChange={this.changeValue} onFocus={this.onFocus}
+                    onBlur={this.onBlur} value={this.props.valor} >
+                </input >
 
-            </div>
+            </div >
         )
     }
 }

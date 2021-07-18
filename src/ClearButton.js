@@ -8,7 +8,7 @@ class ClearButton extends Component {
     }
     render() {
         return (
-            <button name={this.props.name} onClick={this.clear}>
+            <button name={this.props.name} onClick={this.clear} className="clearButton border">
                 Clear
             </button>
         )
