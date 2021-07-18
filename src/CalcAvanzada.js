@@ -47,7 +47,25 @@ class CalcAvanzada extends Component {
 
 
     onDragEnd = result => {
-        // para reordenar la lista
+        console.log(OperacionesList)
+        const { destination, source, draggableId } = result;
+
+        if (!destination) {
+            return;
+        }
+
+        if (
+            destination.droppableId === source.droppableId &&
+            destination.index === source.index
+        ) {
+            return;
+        }
+
+        const newOperacionesList = Array.from(OperacionesList);
+        newOperacionesList.splice(source.index, 1);
+        let operation = OperacionesList.filter(operation => operation.key === draggableId);
+        newOperacionesList.splice(destination.index, 0, operation[0]);
+        OperacionesList = newOperacionesList;
     };
 
     render() {
